@@ -1,0 +1,26 @@
+(library
+ (name hacl_star_raw_bindings)
+ (public_name hacl-star-raw.bindings)
+ (modules)
+ (wrapped false)
+ (libraries ctypes)
+ (flags
+  (:standard -w -33)))
+
+; (copy_files (alias header_files) (files ../*.h))
+(copy_files (files ../Vale.h))
+
+;; Invoke stub generators
+(include dune.inc)
+
+(rule
+ (deps
+  (source_tree .))
+ (action
+  (with-stdout-to dune.inc.gen
+   (run ../gen_dune_rules.exe --lib-bindings ../ctypes.depend))))
+
+(rule
+ (alias runtest)
+ (action
+  (diff dune.inc dune.inc.gen)))
