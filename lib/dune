@@ -1,3 +1,10 @@
+(rule
+ (targets libevercrypt.a libevercrypt.so)
+ (action
+  (no-infer
+   (progn
+    (run make libevercrypt.a libevercrypt.so)))))
+
 (library
  (name hacl_star_raw_bindings)
  (public_name hacl-star-raw.bindings)
@@ -8,7 +15,6 @@
   (:standard -w -33)))
 
 ; (copy_files (alias header_files) (files ../*.h))
-(copy_files (files ../Vale.h))
 
 ;; Invoke stub generators
 (include dune.inc)
