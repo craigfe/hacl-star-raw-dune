@@ -1,9 +1,9 @@
-(rule
- (targets libevercrypt.a libevercrypt.so)
- (action
-  (no-infer
-   (progn
-    (run make libevercrypt.a libevercrypt.so)))))
+; (rule
+;  (targets libevercrypt.a libevercrypt.so)
+;  (action
+;   (no-infer
+;    (progn
+;     (run make libevercrypt.a libevercrypt.so)))))
 
 (library
  (name hacl_star_raw_bindings)
